@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>計數器</title>
+</head>
+<body>
+        <!--建立vue範例時:el(掛載點),data(資料),methods(方法）
+            v-on指令的作用是綁定事件, 簡寫為@
+            方法中透過this,關鍵字取得data中的數據
+            v-text指令的作用是:設定元素的文字值,簡寫為{{}}
+            v-html指令的作用是:設置元素的innerHTML-->
+
+<!-- 引入 Vue.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+<div id="app">
+    <div class="input-num">
+        <button @click="sub">
+            -
+        </button>
+        <span>{{ num }}</span>
+        <button @click="add">
+            +
+        </button>
+    </div>
+</div>
+
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            num:1
+        },
+        methods:{
+            add:function (){
+                //console.log('add')
+                if(this.num < 10){
+                    this.num++;
+                }else {
+                    alert("別點拉，最大拉！")
+                }
+            },
+            sub:function () {
+                //console.log('sub')
+                if (this.num > 0){
+                    this.num--;
+                }else {
+                    alert("別點拉，最小拉！")
+                }
+
+            }
+        }
+    })
+</script>
+
+
+
+
+</body>
+</html>

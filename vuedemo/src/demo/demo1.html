@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-text指令</title>
+</head>
+<body>
+        <!--v-text指令的作用是：設定標籤的內容(textContent)
+        預設寫法會取代全部內容,使用差值表達式{{}}可以取代指定內容-->
+
+<!-- 引入 Vue.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+<div id = "app">
+    <h2 v-text = "message+'!'">台北</h2>
+    <h2 v-text = "info+'!'">台北</h2>
+    <h2>{{ message +'!'}}台北</h2>
+</div>
+
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            message:"黑馬程序員!!!",
+            info:"前端與移動教學部"
+        }
+    })
+</script>
+
+
+</body>
+</html>
