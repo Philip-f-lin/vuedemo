@@ -2,29 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>v-html指令</title>
+    <title>v-on指令</title>
 </head>
 <body>
-        <!--v-html指令的作用是：設定元素的innerHTML
-            內容中有html結構會被解析為標籤
-            v-text指令無論內容是什麼只會解析為文字
-            解析文字使用v-text,需要解析html結構使用v-html-->
+        <!--v-on指令的作用是：為元素綁定事件
+            事件名不需要寫on
+            指令可以簡寫為@
+            綁定的方法定義在methods屬性中
+            方法內部透過this關鍵字可以存取定義在data中數據-->
 
 <!-- 引入 Vue.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 
-<div id = "app">
-    <p v-html = "content"></p>
-    <p v-text = "content"></p>
-
+<div id="app">
+    <input type="button" value="v-on指令" v-on:click="doIt">
+    <input type="button" value="v-on簡寫" @click="doIt">
+    <input type="button" value="雙擊事件" @dblclick="doIt">
+    <h2 @click="changeFood">{{ food }}</h2>
 </div>
 
 <script>
     var app = new Vue({
         el:"#app",
         data:{
-            //content:"黑馬程序員!!!",
-            content:"<a href='www.google.com'>黑馬程序員</a>"
+            food:"蛋炒飯"
+        },
+        methods:{
+            doIt:function(){
+                alert("做It");
+            },
+            changeFood:function(){
+                //console.log((this.food));
+                this.food+="好好吃！"
+            }
         }
     })
 </script>

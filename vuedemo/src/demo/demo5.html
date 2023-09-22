@@ -2,57 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>計數器</title>
+    <title>v-show指令</title>
 </head>
 <body>
-        <!--建立vue範例時:el(掛載點),data(資料),methods(方法）
-            v-on指令的作用是綁定事件, 簡寫為@
-            方法中透過this,關鍵字取得data中的數據
-            v-text指令的作用是:設定元素的文字值,簡寫為{{}}
-            v-html指令的作用是:設置元素的innerHTML-->
+        <!--v-show指令的作用是;根據真假切換元素的顯示狀態
+            原理是修改元素的display,實作顯示隱藏
+            指令後面的內容,最終都會解析為布林值
+            值為true元素顯示,值為false元素隱藏
+            數據改變之後，對應元素的顯示狀態會同步更新-->
 
 <!-- 引入 Vue.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 
 <div id="app">
-    <div class="input-num">
-        <button @click="sub">
-            -
-        </button>
-        <span>{{ num }}</span>
-        <button @click="add">
-            +
-        </button>
-    </div>
+    <input type="button" value="切換顯示狀態" @click="changeIsShow">
+    <input type="button" value="累加年齡" @click="addAge">
+    <img v-show="isShow" src="images/dragon.gif" alt="">
+    <img v-show="age>=18" src="images/dragon.gif" alt="">
 </div>
 
 <script>
     var app = new Vue({
         el:"#app",
         data:{
-            num:1
+            isShow:false,
+            age:17
         },
         methods:{
-            add:function (){
-                //console.log('add')
-                if(this.num < 10){
-                    this.num++;
-                }else {
-                    alert("別點拉，最大拉！")
-                }
+            changeIsShow:function (){
+                this.isShow = !this.isShow;
             },
-            sub:function () {
-                //console.log('sub')
-                if (this.num > 0){
-                    this.num--;
-                }else {
-                    alert("別點拉，最小拉！")
-                }
-
+            addAge:function(){
+                this.age++;
             }
         }
     })
 </script>
+
+
 
 
 

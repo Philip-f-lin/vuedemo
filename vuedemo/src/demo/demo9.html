@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if指令</title>
+</head>
+<body>
+        <!--v-for指令的作用是:根據資料產生列表結構
+            陣列經常和v-for結合使用
+            語法是(item,index) in 數據
+            item 和 index 可以結合其他指令一起使用
+            數組長度的更新會同步到頁面上,是響應式的-->
+
+<!-- 引入 Vue.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+
+
+<div id="app">
+    <input type="button" value="添加數據" @click="add">
+    <input type="button" value="刪除數據" @click="remove">
+
+    <ul>
+        <li v-for="(it,index) in arr">
+            {{ index + 1}}麻古茶坊{{ it }}
+        </li>
+    </ul>
+
+    <h2 v-for="item in vegetables" v-bind:title="item.name">
+        {{ item.name }}
+    </h2>
+
+</div>
+
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            arr:["台北","台中","台南","高雄"],
+            vegetables:[
+                {name:"蛋炒飯"},
+                {name:"牛肉炒飯"}
+            ]
+        },
+        methods:{
+            add:function (){
+                this.vegetables.push({name:"珍珠奶茶"});
+            },
+            remove:function () {
+                this.vegetables.shift();
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

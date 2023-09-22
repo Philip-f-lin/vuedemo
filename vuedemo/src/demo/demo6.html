@@ -2,23 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>v-show指令</title>
+    <title>v-if指令</title>
 </head>
 <body>
-        <!--v-show指令的作用是;根據真假切換元素的顯示狀態
-            原理是修改元素的display,實作顯示隱藏
-            指令後面的內容,最終都會解析為布林值
-            值為true元素顯示,值為false元素隱藏
-            數據改變之後，對應元素的顯示狀態會同步更新-->
+        <!--v-if指令的作用是：根據表達式的真假切換元素的顯示狀態
+            本質是透過操縱dom元素來切換顯示狀態
+            表達式的值為true，元素存在於dom樹中，為false，從dom樹中移除
+            頻繁地切換選擇使用v-show，反之使用v-if，v-show的切換消耗較小-->
 
 <!-- 引入 Vue.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 
 <div id="app">
-    <input type="button" value="切換顯示狀態" @click="changeIsShow">
-    <input type="button" value="累加年齡" @click="addAge">
-    <img v-show="isShow" src="dragon.gif" alt="">
-    <img v-show="age>=18" src="dragon.gif" alt="">
+    <input type="button" value="切換顯示" @click="toggleIsShow">
+    <p v-if="isShow">黑馬程序員</p>
+    <p v-show="isShow">黑馬程序員 - v-show修飾</p>
+    <h2 v-if="temperature>=35">熱死了</h2>
 </div>
 
 <script>
@@ -26,22 +25,17 @@
         el:"#app",
         data:{
             isShow:false,
-            age:17
+            temperature:20
         },
         methods:{
-            changeIsShow:function (){
+            toggleIsShow:function () {
                 this.isShow = !this.isShow;
-            },
-            addAge:function(){
-                this.age++;
+
             }
         }
+
     })
 </script>
-
-
-
-
 
 
 </body>

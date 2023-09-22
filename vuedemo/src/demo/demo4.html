@@ -2,42 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>v-on指令</title>
+    <title>計數器</title>
 </head>
 <body>
-        <!--v-on指令的作用是：為元素綁定事件
-            事件名不需要寫on
-            指令可以簡寫為@
-            綁定的方法定義在methods屬性中
-            方法內部透過this關鍵字可以存取定義在data中數據-->
+        <!--建立vue範例時:el(掛載點),data(資料),methods(方法）
+            v-on指令的作用是綁定事件, 簡寫為@
+            方法中透過this,關鍵字取得data中的數據
+            v-text指令的作用是:設定元素的文字值,簡寫為{{}}
+            v-html指令的作用是:設置元素的innerHTML-->
 
 <!-- 引入 Vue.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 
 <div id="app">
-    <input type="button" value="v-on指令" v-on:click="doIt">
-    <input type="button" value="v-on簡寫" @click="doIt">
-    <input type="button" value="雙擊事件" @dblclick="doIt">
-    <h2 @click="changeFood">{{ food }}</h2>
+    <div class="input-num">
+        <button @click="sub">
+            -
+        </button>
+        <span>{{ num }}</span>
+        <button @click="add">
+            +
+        </button>
+    </div>
 </div>
 
 <script>
     var app = new Vue({
         el:"#app",
         data:{
-            food:"蛋炒飯"
+            num:1
         },
         methods:{
-            doIt:function(){
-                alert("做It");
+            add:function (){
+                //console.log('add')
+                if(this.num < 10){
+                    this.num++;
+                }else {
+                    alert("別點拉，最大拉！")
+                }
             },
-            changeFood:function(){
-                //console.log((this.food));
-                this.food+="好好吃！"
+            sub:function () {
+                //console.log('sub')
+                if (this.num > 0){
+                    this.num--;
+                }else {
+                    alert("別點拉，最小拉！")
+                }
+
             }
         }
     })
 </script>
+
+
 
 
 </body>
