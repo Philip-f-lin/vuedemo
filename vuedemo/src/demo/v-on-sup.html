@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on補充</title>
+</head>
+<body>
+        <!--事件綁定的方法寫成函數呼叫的形式，可以傳入自訂義參數
+            定義方法時需要定義形參來接收傳入的實參
+            事件的後面跟上.修飾符 可以對事件進行限制
+            .enter 可以限制觸發的按鍵為enter
+            事件修飾符有多種-->
+
+
+<!-- 引入 Vue.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+<div id="app">
+
+    <input type="button" value="點擊" @click="doIt(123,'讚讚')">
+    <input type="text" @keyup.enter="sayHi">
+
+</div>
+
+<script>
+    var app = new Vue({
+        el:"#app",
+        methods:{
+            doIt:function (p1,p2) {
+                console.log("做it")
+                console.log(p1)
+                console.log(p2)
+            },
+            sayHi:function () {
+                alert("吃飽沒")
+            }
+        }
+
+    })
+</script>
+
+
+</body>
+</html>

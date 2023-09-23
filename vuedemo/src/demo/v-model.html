@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model</title>
+</head>
+<body>
+            <!--v-model指令的作用是便利的設定和取得表單元素的值
+            綁定的資料會和表單元素值相關聯
+            綁定的資料雙向綁定表單元素的值-->
+
+<!-- 引入 Vue.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+<div id="app">
+    <input type="button" value="修改message" @click="setM">
+    <input type="text" v-model="message" @keyup.enter="getM">
+    <h2>{{ message }}</h2>
+</div>
+
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            message:"黑馬程序員"
+        },
+        methods:{
+            getM:function (){
+                alert(this.message);
+            },
+            setM:function () {
+                this.message="滷肉飯";
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

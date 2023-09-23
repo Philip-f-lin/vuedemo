@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on</title>
+</head>
+<body>
+
+<!-- 引入 Vue.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+<div id="app">
+  <input type="button" value="v-on指令" @click="doIt">
+  <input type="button" value="雙擊事件" @dblclick="doItIt">
+  <h2 @click="addFood">{{ message }}</h2>
+
+</div>
+
+<script>
+  var app = new Vue({
+    el:"#app",
+    data:{
+      message:"蘋果"
+    },
+    methods:{
+      doIt:function (){
+        alert("doIt")
+      },
+      doItIt:function () {
+        alert("做It")
+      },
+      addFood:function (){
+        this.message+="好好吃"
+      }
+    }
+
+  })
+</script>
+
+
+</body>
+</html>

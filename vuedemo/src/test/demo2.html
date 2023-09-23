@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+<div id="app">
+    <button @click="sub">
+        -
+    </button>
+    <span>{{ num }}</span>
+    <button @click="add">
+        +
+    </button>
+</div>
+
+
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            num:1
+        },
+        methods:{
+            sub:function () {
+                if (this.num > 0){
+                    this.num -= 1
+                }else{
+                    alert("最小是0")
+                }
+
+            },
+            add:function () {
+                if(this.num < 10){
+                    this.num += 1
+                }else{
+                    alert("最大是10")
+                }
+
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
